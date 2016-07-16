@@ -1,8 +1,7 @@
 #pragma once
 #include "@smallstoneapps/linked-list/linked-list.h"
-#include "../src/h/pebble-string-dict-private.h"
 
-typedef _StringDict StringDict;
+typedef struct LinkedRoot StringDict;
 
 StringDict* string_dict_create();
 void string_dict_destroy(StringDict *this);

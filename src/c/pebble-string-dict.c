@@ -82,7 +82,7 @@ bool string_dict_has_key(StringDict* this, char* key) {
   return linked_list_find_compare(this, key, prv_string_dict_find) != -1;
 }
 
-void* string_dict_get_data(StringDict *this, char* key, uint16_t length) {
+void* string_dict_get_data(StringDict *this, char* key) {
   int16_t list_key = linked_list_find_compare(this, key, prv_string_dict_find);
   if (list_key == -1) {
     // Not Found
@@ -97,20 +97,20 @@ void* string_dict_get_data(StringDict *this, char* key, uint16_t length) {
 }
 
 bool string_dict_get_bool(StringDict *this, char* key) {
-  void* data = string_dict_get_data(this, key, 1);
+  void* data = string_dict_get_data(this, key);
   if (data == NULL) return false;
 
   return (*((uint8_t *) data)) == 1;
 }
 
 uint32_t string_dict_get_int(StringDict *this, char* key) {
-  void* data = string_dict_get_data(this, key, sizeof(int32_t));
+  void* data = string_dict_get_data(this, key);
   if (data == NULL) return 0;
 
   return (*((int32_t *) data));
 }
 
 char* string_dict_get_string(StringDict *this, char* key) {
-  char* data = (char*) string_dict_get_data(this, key, 14);
+  char* data = (char*) string_dict_get_data(this, key);
   return data;
 }
