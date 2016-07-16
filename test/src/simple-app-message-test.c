@@ -1,5 +1,5 @@
 #include <pebble.h>
-#include "pebble-simple-app-message/pebble-simple-app-message.h"
+#include "pebble-string-dict/pebble-string-dict.h"
 
 static Window *s_window;
 static TextLayer *s_text_layer;
@@ -18,7 +18,7 @@ static void prv_window_load(Window *window) {
 }
 
 static void prv_window_unload(Window *window) {
-  StringDict *d = string_dict_get_data(dict, "dataKey", 12);
+  StringDict *d = string_dict_get_data(dict, "dataKey");
 
   APP_LOG(APP_LOG_LEVEL_INFO, "trueKey: %s", string_dict_get_bool(d, "trueKey") ? "true" : "false");
   APP_LOG(APP_LOG_LEVEL_INFO, "falseKey: %s", string_dict_get_bool(d, "falseKey") ? "true" : "false");
